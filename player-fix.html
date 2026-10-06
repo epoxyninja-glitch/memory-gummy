@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Memory Gummy — Your AI wakes up cold.</title>
+  <meta name="description" content="A portable briefing you paste into a fresh AI chat. Fix the cold start in 42 seconds.">
+  <style>
+    :root { --ink:#14110e; --paper:#f6f1e8; --amber:#e38b2b; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: Georgia, serif; background:var(--paper); color:var(--ink); }
+    header, main, footer { padding: 20px 16px; }
+    .mark { font-family: Arial, sans-serif; font-weight: 900; letter-spacing: 0.08em; font-size: 13px; }
+    h1 { font-size: 40px; line-height: 0.95; margin: 12px 0; letter-spacing: -0.03em; }
+    h1 em { font-style: normal; background: var(--amber); padding: 0 6px; }
+    .sub { font-size: 18px; }
+    .small { font-family: Arial, sans-serif; font-size: 14px; }
+    button, .btn {
+      display: inline-block; background: var(--ink); color: #fff; border: 0;
+      font-weight: 800; padding: 14px 16px; text-decoration: none; font-family: Arial, sans-serif;
+    }
+    section { border-top: 1px solid #ddd; padding-top: 8px; }
+    label { display:block; font-family: Arial, sans-serif; font-weight: 700; margin: 14px 0 6px; }
+    label span { color: var(--amber); font-family: ui-monospace, monospace; margin-right: 6px; }
+    textarea { width:100%; font: 16px/1.4 Arial, sans-serif; padding: 10px; border: 1px solid #111; background: #fffdf8; }
+    .bag { font-family: Arial, sans-serif; font-size: 13px; margin: 12px 0; }
+    .tag {
+      position: relative; margin: 16px 0; background: #fffdf8; border: 1px solid #111;
+      box-shadow: 4px 4px 0 #111; padding: 18px 16px 16px 28px;
+    }
+    .tag:before {
+      content: ""; position: absolute; left: 10px; top: 16px; width: 10px; height: 10px;
+      border: 2px solid #111; border-radius: 50%; background: var(--paper);
+    }
+    .tag-top { display:flex; justify-content: space-between; font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: 0.06em; }
+    .tag-top b { background: var(--amber); padding: 2px 6px; }
+    .tag pre { white-space: pre-wrap; font-family: ui-monospace, monospace; font-size: 13px; margin: 12px 0; }
+    .tag button { width: 100%; }
+    .receipt {
+      font-family: ui-monospace, monospace; border: 1px solid #111; padding: 16px; max-width: 360px;
+      background: #fffdf8; box-shadow: 4px 4px 0 #111;
+    }
+    .receipt .row { display:flex; justify-content: space-between; margin: 6px 0; }
+    footer { font-family: Arial, sans-serif; font-size: 13px; }
+    @media (min-width: 800px) { h1 { font-size: 64px; } main { max-width: 760px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="mark">MEMORY GUMMY</div>
+  </header>
+  <main>
+    <h1>Your AI wakes up cold.<br><em>Fix that in 42 seconds.</em></h1>
+    <p class="sub">A portable briefing you paste into Claude, Grok, Gemini, Perplexity, ChatGPT, and whatever comes next.</p>
+    <p class="small">New chat. Same you.</p>
+    <audio controls preload="none" src="New%20Chat%2C%20Same%20You%20(1).m4a" style="width:100%;max-width:420px;margin:8px 0 12px;"></audio>
+    <p class="small">No lock-in. No fake permanent memory. Your context stays yours.</p>
+    <p><a class="btn" href="#chew">Chew one — first month free</a></p>
+
+    <section>
+      <h2>Stop starting from zero.</h2>
+      <p>You explain the business again. The fresh instance guesses wrong. You correct it. The work starts late.</p>
+      <p>A Memory Gummy gives the next AI the map before it starts driving.</p>
+    </section>
+
+    <section id="chew">
+      <h2>Six questions. One gummy.</h2>
+      <form id="intake">
+        <label><span>01</span> Who are you?</label>
+        <textarea name="who" rows="2" placeholder="Name, role, what you manage."></textarea>
+        <label><span>02</span> What are you building right now?</label>
+        <textarea name="now" rows="2" placeholder="1–5 active projects."></textarea>
+        <label><span>03</span> Who are the standing people?</label>
+        <textarea name="people" rows="2" placeholder="Roles only. Nothing you would not paste into a third-party chat."></textarea>
+        <label><span>04</span> How should an AI work with you?</label>
+        <textarea name="style" rows="2" placeholder="Tone, detail, what a good answer looks like."></textarea>
+        <label><span>05</span> What must it never do?</label>
+        <textarea name="never" rows="2" placeholder="Boundaries. Facts it must not invent."></textarea>
+        <label><span>06</span> What should it always remember?</label>
+        <textarea name="always" rows="2" placeholder="The decision rule or the next step."></textarea>
+        <p class="bag">Check the bag. No passwords, card numbers, medical records, or legal files.</p>
+        <p class="small">Nothing is sent. The chew stays in this browser.</p>
+        <p><button type="submit">Make the gummy</button></p>
+      </form>
+      <div class="tag" id="tag" hidden>
+        <div class="tag-top"><span>MEMORY GUMMY / 001</span><b>READY TO CARRY</b></div>
+        <pre id="out"></pre>
+        <button id="copy" type="button">Copy my gummy</button>
+        <p class="small" id="packed" hidden>Packed. Paste it into the next chat.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="receipt">
+        <div>MEMORY GUMMY</div>
+        <div>ONE HUMAN. ONE PRICE.</div>
+        <div class="row"><span>First month</span><span>FREE</span></div>
+        <div class="row"><span>After that</span><span>$42 / month</span></div>
+        <div>Unlimited gummies.</div>
+        <div>Cancel anytime.</div>
+        <div>YOUR CONTEXT STAYS YOURS.</div>
+      </div>
+      <p class="small">Checkout is not on this page yet.</p>
+    </section>
+  </main>
+  <footer>A Ring Man runner. Context you carry, not memory the model keeps.</footer>
+  <script>
+    const form = document.getElementById("intake");
+    const out = document.getElementById("out");
+    const tag = document.getElementById("tag");
+    const copy = document.getElementById("copy");
+    const packed = document.getElementById("packed");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const d = new FormData(form);
+      const today = new Date().toISOString().slice(0, 10);
+      const text = [
+        "# MEMORY GUMMY",
+        "Version: " + today,
+        "Purpose: Orient a fresh AI assistant for this session.",
+        "",
+        "## Identity and Role",
+        d.get("who") || "Not given.",
+        "",
+        "## Current Mission",
+        d.get("now") || "Not given.",
+        "",
+        "## Key People and Roles",
+        d.get("people") || "Not given.",
+        "",
+        "## Working Preferences",
+        d.get("style") || "Not given.",
+        "",
+        "## Standing Rules",
+        d.get("never") || "Do not invent facts.",
+        "- Do not invent facts.",
+        "- Flag uncertainty.",
+        "- Protect private information.",
+        "",
+        "## Always",
+        d.get("always") || "Not given.",
+        "",
+        "## First Response Required",
+        "1. Confirm your understanding in five bullets.",
+        "2. Identify missing facts or risks.",
+        "3. Give the next three practical actions."
+      ].join("\n");
+      out.textContent = text;
+      tag.hidden = false;
+      packed.hidden = true;
+      copy.textContent = "Copy my gummy";
+      tag.scrollIntoView({ behavior: "smooth", block: "start" });
+      copy.onclick = function () {
+        navigator.clipboard.writeText(text);
+        copy.textContent = "Copied";
+        packed.hidden = false;
+      };
+    });
+  </script>
+</body>
+</html>
